@@ -14,6 +14,8 @@ const empty = {
   categoryId: '',
   isActive: true,
   isFeatured: false,
+  isBestSeller: false,
+  isNewArrival: false,
   image: '',
 };
 
@@ -56,7 +58,12 @@ const ProductForm = () => {
     e.preventDefault();
     setError('');
     try {
-      const payload = { ...form, price: Number(form.price), categoryId: Number(form.categoryId) };
+      const payload = {
+        ...form,
+        price: Number(form.price),
+        categoryId: Number(form.categoryId),
+        compareAtPrice: form.compareAtPrice ? Number(form.compareAtPrice) : null,
+      };
       if (isNew) {
         await api.post('/products', payload);
       } else {
@@ -112,6 +119,15 @@ const ProductForm = () => {
             <label>Stock</label>
             <input type="number" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
           </div>
+          <div className="form-group">
+            <label>Compare-at Price (optional, shows as a strikethrough "Offer" price)</label>
+            <input
+              type="number"
+              step="0.001"
+              value={form.compareAtPrice || ''}
+              onChange={(e) => setForm({ ...form, compareAtPrice: e.target.value })}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label>Image</label>
@@ -127,6 +143,26 @@ const ProductForm = () => {
         <div className="form-group">
           <label>
             <input type="checkbox" checked={form.isFeatured} onChange={(e) => setForm({ ...form, isFeatured: e.target.checked })} /> Featured on homepage
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={form.isBestSeller}
+              onChange={(e) => setForm({ ...form, isBestSeller: e.target.checked })}
+            />{' '}
+            Show in "Best Sellers" on homepage
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={form.isNewArrival}
+              onChange={(e) => setForm({ ...form, isNewArrival: e.target.checked })}
+            />{' '}
+            Show in "New Arrivals" on homepage
           </label>
         </div>
         {error && <p className="error-text">{error}</p>}
