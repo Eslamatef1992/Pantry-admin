@@ -15,7 +15,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <img src="/logo-colored.svg" alt="Pantry" />
-        <span>Makani Foods</span>
+        <span>Pantry Foods</span>
       </div>
       <nav>
         {links.map((l) => (

@@ -25,7 +25,7 @@ const Login = () => {
       <form onSubmit={handleSubmit} className="card" style={{ width: 360 }}>
         <div style={{ textAlign: 'center', marginBottom: 16 }}>
           <img src="/logo-colored.svg" alt="Pantry" style={{ height: 48 }} />
-          <h2>Makani Foods Admin</h2>
+          <h2>Pantry Foods Admin</h2>
         </div>
         <div className="form-group">
           <label>Email</label>
