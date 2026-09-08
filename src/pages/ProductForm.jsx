@@ -16,6 +16,7 @@ const empty = {
   isFeatured: false,
   isBestSeller: false,
   isNewArrival: false,
+  isBundle: false,
   image: '',
 };
 
@@ -163,6 +164,16 @@ const ProductForm = () => {
               onChange={(e) => setForm({ ...form, isNewArrival: e.target.checked })}
             />{' '}
             Show in "New Arrivals" on homepage
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={form.isBundle}
+              onChange={(e) => setForm({ ...form, isBundle: e.target.checked })}
+            />{' '}
+            Show in "Bundles" on homepage
           </label>
         </div>
         {error && <p className="error-text">{error}</p>}
