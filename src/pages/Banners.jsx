@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const empty = {
@@ -13,6 +14,7 @@ const empty = {
 };
 
 const Banners = () => {
+  const { t } = useTranslation();
   const [banners, setBanners] = useState([]);
   const [form, setForm] = useState(empty);
   const [editingId, setEditingId] = useState(null);
@@ -42,7 +44,7 @@ const Banners = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    if (!form.image) return setError('Please upload a banner image.');
+    if (!form.image) return setError(t('banners_page.image_required'));
     try {
       if (editingId) {
         await api.put(`/banners/${editingId}`, form);
@@ -53,7 +55,7 @@ const Banners = () => {
       setEditingId(null);
       load();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to save banner');
+      setError(err.response?.data?.message || t('banners_page.save_failed'));
     }
   };
 
@@ -77,61 +79,62 @@ const Banners = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Delete this banner?')) return;
+    if (!window.confirm(t('banners_page.confirm_delete'))) return;
     await api.delete(`/banners/${id}`);
     load();
   };
 
   return (
     <div>
-      <h1>Homepage Banners</h1>
+      <h1>{t('banners_page.title')}</h1>
       <div className="card" style={{ marginBottom: 20, maxWidth: 640 }}>
-        <h3 style={{ marginTop: 0 }}>{editingId ? 'Edit Banner' : 'Add Banner'}</h3>
+        <h3 style={{ marginTop: 0 }}>{editingId ? t('banners_page.edit_banner') : t('banners_page.add_banner')}</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Banner Image (recommended ~1200x400)</label>
+            <label>{t('banners_page.image_label')}</label>
             <input type="file" accept="image/*" onChange={handleUpload} />
-            {uploading && <span>Uploading...</span>}
+            {uploading && <span>{t('banners_page.uploading')}</span>}
             {form.image && <img src={form.image} alt="" style={{ height: 60, marginTop: 8, display: 'block' }} />}
           </div>
           <div className="grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="form-group">
-              <label>Title (EN)</label>
+              <label>{t('banners_page.title_en')}</label>
               <input value={form.titleEn} onChange={(e) => setForm({ ...form, titleEn: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Title (AR)</label>
+              <label>{t('banners_page.title_ar')}</label>
               <input dir="rtl" value={form.titleAr} onChange={(e) => setForm({ ...form, titleAr: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Subtitle (EN)</label>
+              <label>{t('banners_page.subtitle_en')}</label>
               <input value={form.subtitleEn} onChange={(e) => setForm({ ...form, subtitleEn: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Subtitle (AR)</label>
+              <label>{t('banners_page.subtitle_ar')}</label>
               <input dir="rtl" value={form.subtitleAr} onChange={(e) => setForm({ ...form, subtitleAr: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Link URL</label>
+              <label>{t('banners_page.link_url')}</label>
               <input value={form.linkUrl} onChange={(e) => setForm({ ...form, linkUrl: e.target.value })} />
             </div>
             <div className="form-group">
-              <label>Sort Order</label>
+              <label>{t('banners_page.sort_order')}</label>
               <input type="number" value={form.sortOrder} onChange={(e) => setForm({ ...form, sortOrder: Number(e.target.value) })} />
             </div>
           </div>
           <div className="form-group">
             <label>
-              <input type="checkbox" checked={form.isActive} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} /> Active
+              <input type="checkbox" checked={form.isActive} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} />{' '}
+              {t('banners_page.active')}
             </label>
           </div>
           {error && <p className="error-text">{error}</p>}
           <button type="submit" className="btn">
-            {editingId ? 'Update' : 'Add'}
+            {editingId ? t('banners_page.update') : t('banners_page.add')}
           </button>
           {editingId && (
             <button type="button" className="btn btn-outline" style={{ marginLeft: 8 }} onClick={handleCancel}>
-              Cancel
+              {t('banners_page.cancel')}
             </button>
           )}
         </form>
@@ -141,10 +144,10 @@ const Banners = () => {
         <table>
           <thead>
             <tr>
-              <th>Image</th>
-              <th>Title (EN)</th>
-              <th>Sort</th>
-              <th>Status</th>
+              <th>{t('banners_page.image_col')}</th>
+              <th>{t('banners_page.title_col')}</th>
+              <th>{t('banners_page.sort_col')}</th>
+              <th>{t('common.status')}</th>
               <th></th>
             </tr>
           </thead>
@@ -157,14 +160,14 @@ const Banners = () => {
                 <td>{b.titleEn}</td>
                 <td>{b.sortOrder}</td>
                 <td>
-                  <span className={`badge ${b.isActive ? 'on' : 'off'}`}>{b.isActive ? 'Active' : 'Hidden'}</span>
+                  <span className={`badge ${b.isActive ? 'on' : 'off'}`}>{b.isActive ? t('common.active') : t('categories.hidden')}</span>
                 </td>
                 <td>
                   <button className="btn btn-outline" onClick={() => handleEdit(b)} style={{ marginRight: 8 }}>
-                    Edit
+                    {t('common.edit')}
                   </button>
                   <button className="btn btn-danger" onClick={() => handleDelete(b.id)}>
-                    Delete
+                    {t('common.delete')}
                   </button>
                 </td>
               </tr>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const [stats, setStats] = useState({ orders: 0, products: 0, revenue: 0, pending: 0 });
 
   useEffect(() => {
@@ -17,23 +19,23 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>{t('dashboard.title')}</h1>
       <div className="stat-grid">
         <div className="card stat-card">
           <div className="value">{stats.orders}</div>
-          <div className="label">Total Orders</div>
+          <div className="label">{t('dashboard.total_orders')}</div>
         </div>
         <div className="card stat-card">
           <div className="value">{stats.pending}</div>
-          <div className="label">Pending Orders</div>
+          <div className="label">{t('dashboard.pending_orders')}</div>
         </div>
         <div className="card stat-card">
           <div className="value">{stats.products}</div>
-          <div className="label">Products</div>
+          <div className="label">{t('dashboard.products')}</div>
         </div>
         <div className="card stat-card">
           <div className="value">{stats.revenue.toFixed(3)} KWD</div>
-          <div className="label">Revenue (paid orders)</div>
+          <div className="label">{t('dashboard.revenue')}</div>
         </div>
       </div>
     </div>

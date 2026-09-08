@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const Products = () => {
+  const { t } = useTranslation();
   const [products, setProducts] = useState([]);
 
   const load = () => api.get('/products', { params: { all: true, limit: 100 } }).then((res) => setProducts(res.data.products));
@@ -12,7 +14,7 @@ const Products = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Delete this product?')) return;
+    if (!window.confirm(t('products_page.confirm_delete'))) return;
     await api.delete(`/products/${id}`);
     load();
   };
@@ -20,20 +22,20 @@ const Products = () => {
   return (
     <div>
       <div className="toolbar">
-        <h1>Products</h1>
+        <h1>{t('products_page.title')}</h1>
         <Link to="/products/new" className="btn">
-          + Add Product
+          {t('products_page.add_product')}
         </Link>
       </div>
       <div className="card">
         <table>
           <thead>
             <tr>
-              <th>Name (EN)</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Status</th>
+              <th>{t('products_page.name_en')}</th>
+              <th>{t('products_page.category')}</th>
+              <th>{t('products_page.price')}</th>
+              <th>{t('products_page.stock')}</th>
+              <th>{t('common.status')}</th>
               <th></th>
             </tr>
           </thead>
@@ -45,14 +47,14 @@ const Products = () => {
                 <td>{Number(p.price).toFixed(3)} KWD</td>
                 <td>{p.stock}</td>
                 <td>
-                  <span className={`badge ${p.isActive ? 'on' : 'off'}`}>{p.isActive ? 'Active' : 'Hidden'}</span>
+                  <span className={`badge ${p.isActive ? 'on' : 'off'}`}>{p.isActive ? t('common.active') : t('categories.hidden')}</span>
                 </td>
                 <td>
                   <Link to={`/products/${p.id}`} className="btn btn-outline" style={{ marginRight: 8 }}>
-                    Edit
+                    {t('common.edit')}
                   </Link>
                   <button className="btn btn-danger" onClick={() => handleDelete(p.id)}>
-                    Delete
+                    {t('common.delete')}
                   </button>
                 </td>
               </tr>

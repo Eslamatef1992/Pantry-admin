@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const statusOptions = ['pending', 'confirmed', 'processing', 'out_for_delivery', 'delivered', 'cancelled'];
 
 const Orders = () => {
+  const { t } = useTranslation();
   const [orders, setOrders] = useState([]);
   const [statusFilter, setStatusFilter] = useState('');
 
@@ -26,9 +28,9 @@ const Orders = () => {
   return (
     <div>
       <div className="toolbar">
-        <h1>Orders</h1>
+        <h1>{t('orders_page.title')}</h1>
         <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} style={{ padding: 8 }}>
-          <option value="">All statuses</option>
+          <option value="">{t('orders_page.all_statuses')}</option>
           {statusOptions.map((s) => (
             <option key={s} value={s}>
               {s}
@@ -40,12 +42,12 @@ const Orders = () => {
         <table>
           <thead>
             <tr>
-              <th>Order #</th>
-              <th>Customer</th>
-              <th>Payment</th>
-              <th>Total</th>
-              <th>Status</th>
-              <th>Date</th>
+              <th>{t('orders_page.order_number')}</th>
+              <th>{t('orders_page.customer')}</th>
+              <th>{t('orders_page.payment')}</th>
+              <th>{t('orders_page.total')}</th>
+              <th>{t('orders_page.status')}</th>
+              <th>{t('orders_page.date')}</th>
               <th></th>
             </tr>
           </thead>
@@ -53,7 +55,7 @@ const Orders = () => {
             {orders.map((o) => (
               <tr key={o.id}>
                 <td>{o.orderNumber}</td>
-                <td>{o.guestName || (o.userId ? `Account #${o.userId}` : '—')}</td>
+                <td>{o.guestName || (o.userId ? `Account #${o.userId}` : t('orders_page.unregistered'))}</td>
                 <td>
                   {o.paymentMethod.toUpperCase()} · <span className={`badge ${o.paymentStatus === 'paid' ? 'on' : 'off'}`}>{o.paymentStatus}</span>
                 </td>
@@ -69,7 +71,7 @@ const Orders = () => {
                 </td>
                 <td>{new Date(o.createdAt).toLocaleDateString()}</td>
                 <td>
-                  <Link to={`/orders/${o.id}`}>View</Link>
+                  <Link to={`/orders/${o.id}`}>{t('orders_page.view')}</Link>
                 </td>
               </tr>
             ))}

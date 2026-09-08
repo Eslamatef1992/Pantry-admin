@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const empty = {
@@ -21,6 +22,7 @@ const empty = {
 };
 
 const ProductForm = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const isNew = id === 'new';
   const navigate = useNavigate();
@@ -72,35 +74,35 @@ const ProductForm = () => {
       }
       navigate('/products');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to save product');
+      setError(err.response?.data?.message || t('product_form.save_failed'));
     }
   };
 
   return (
     <div>
-      <h1>{isNew ? 'Add Product' : 'Edit Product'}</h1>
+      <h1>{isNew ? t('product_form.add_title') : t('product_form.edit_title')}</h1>
       <form onSubmit={handleSubmit} className="card" style={{ maxWidth: 640 }}>
         <div className="form-group">
-          <label>Name (EN)</label>
+          <label>{t('product_form.name_en')}</label>
           <input required value={form.nameEn} onChange={(e) => setForm({ ...form, nameEn: e.target.value })} />
         </div>
         <div className="form-group">
-          <label>Name (AR)</label>
+          <label>{t('product_form.name_ar')}</label>
           <input required dir="rtl" value={form.nameAr} onChange={(e) => setForm({ ...form, nameAr: e.target.value })} />
         </div>
         <div className="form-group">
-          <label>Description (EN)</label>
+          <label>{t('product_form.description_en')}</label>
           <textarea rows={3} value={form.descriptionEn} onChange={(e) => setForm({ ...form, descriptionEn: e.target.value })} />
         </div>
         <div className="form-group">
-          <label>Description (AR)</label>
+          <label>{t('product_form.description_ar')}</label>
           <textarea rows={3} dir="rtl" value={form.descriptionAr} onChange={(e) => setForm({ ...form, descriptionAr: e.target.value })} />
         </div>
         <div className="grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           <div className="form-group">
-            <label>Category</label>
+            <label>{t('product_form.category')}</label>
             <select required value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
-              <option value="">Select...</option>
+              <option value="">{t('product_form.select')}</option>
               {categories.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.nameEn}
@@ -109,19 +111,19 @@ const ProductForm = () => {
             </select>
           </div>
           <div className="form-group">
-            <label>Unit</label>
+            <label>{t('product_form.unit')}</label>
             <input value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} />
           </div>
           <div className="form-group">
-            <label>Price (KWD)</label>
+            <label>{t('product_form.price')}</label>
             <input type="number" step="0.001" required value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
           </div>
           <div className="form-group">
-            <label>Stock</label>
+            <label>{t('product_form.stock')}</label>
             <input type="number" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
           </div>
           <div className="form-group">
-            <label>Compare-at Price (optional, shows as a strikethrough "Offer" price)</label>
+            <label>{t('product_form.compare_at_price')}</label>
             <input
               type="number"
               step="0.001"
@@ -131,19 +133,21 @@ const ProductForm = () => {
           </div>
         </div>
         <div className="form-group">
-          <label>Image</label>
+          <label>{t('product_form.image')}</label>
           <input type="file" accept="image/*" onChange={handleUpload} />
-          {uploading && <span>Uploading...</span>}
+          {uploading && <span>{t('product_form.uploading')}</span>}
           {form.image && <img src={form.image} alt="" style={{ height: 60, marginTop: 8 }} />}
         </div>
         <div className="form-group">
           <label>
-            <input type="checkbox" checked={form.isActive} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} /> Active
+            <input type="checkbox" checked={form.isActive} onChange={(e) => setForm({ ...form, isActive: e.target.checked })} />{' '}
+            {t('product_form.active')}
           </label>
         </div>
         <div className="form-group">
           <label>
-            <input type="checkbox" checked={form.isFeatured} onChange={(e) => setForm({ ...form, isFeatured: e.target.checked })} /> Featured on homepage
+            <input type="checkbox" checked={form.isFeatured} onChange={(e) => setForm({ ...form, isFeatured: e.target.checked })} />{' '}
+            {t('product_form.featured')}
           </label>
         </div>
         <div className="form-group">
@@ -153,7 +157,7 @@ const ProductForm = () => {
               checked={form.isBestSeller}
               onChange={(e) => setForm({ ...form, isBestSeller: e.target.checked })}
             />{' '}
-            Show in "Best Sellers" on homepage
+            {t('product_form.best_seller')}
           </label>
         </div>
         <div className="form-group">
@@ -163,7 +167,7 @@ const ProductForm = () => {
               checked={form.isNewArrival}
               onChange={(e) => setForm({ ...form, isNewArrival: e.target.checked })}
             />{' '}
-            Show in "New Arrivals" on homepage
+            {t('product_form.new_arrival')}
           </label>
         </div>
         <div className="form-group">
@@ -173,12 +177,12 @@ const ProductForm = () => {
               checked={form.isBundle}
               onChange={(e) => setForm({ ...form, isBundle: e.target.checked })}
             />{' '}
-            Show in "Bundles" on homepage
+            {t('product_form.bundle')}
           </label>
         </div>
         {error && <p className="error-text">{error}</p>}
         <button type="submit" className="btn">
-          Save
+          {t('product_form.save')}
         </button>
       </form>
     </div>
