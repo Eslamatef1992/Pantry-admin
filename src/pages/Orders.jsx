@@ -41,6 +41,7 @@ const Orders = () => {
           <thead>
             <tr>
               <th>Order #</th>
+              <th>Customer</th>
               <th>Payment</th>
               <th>Total</th>
               <th>Status</th>
@@ -52,6 +53,7 @@ const Orders = () => {
             {orders.map((o) => (
               <tr key={o.id}>
                 <td>{o.orderNumber}</td>
+                <td>{o.guestName || (o.userId ? `Account #${o.userId}` : '—')}</td>
                 <td>
                   {o.paymentMethod.toUpperCase()} · <span className={`badge ${o.paymentStatus === 'paid' ? 'on' : 'off'}`}>{o.paymentStatus}</span>
                 </td>
