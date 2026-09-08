@@ -61,7 +61,8 @@
     "hidden": "مخفي",
     "update": "تحديث",
     "confirm_delete": "هل تريد حذف هذه الفئة؟",
-    "save_failed": "فشل حفظ الفئة"
+    "save_failed": "فشل حفظ الفئة",
+    "image": "الصورة"
   },
   "products_page": {
     "title": "المنتجات",

@@ -61,7 +61,8 @@
     "hidden": "Hidden",
     "update": "Update",
     "confirm_delete": "Delete this category?",
-    "save_failed": "Failed to save category"
+    "save_failed": "Failed to save category",
+    "image": "Image"
   },
   "products_page": {
     "title": "Products",

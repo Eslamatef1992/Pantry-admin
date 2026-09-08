@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
-const empty = { nameEn: '', nameAr: '', isActive: true, sortOrder: 0 };
+const empty = { nameEn: '', nameAr: '', image: '', isActive: true, sortOrder: 0 };
 
 const Categories = () => {
   const { t } = useTranslation();
@@ -10,6 +10,7 @@ const Categories = () => {
   const [form, setForm] = useState(empty);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
+  const [uploading, setUploading] = useState(false);
 
   const load = () => api.get('/categories', { params: { all: true } }).then((res) => setCategories(res.data));
 
@@ -34,9 +35,23 @@ const Categories = () => {
     }
   };
 
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const data = new FormData();
+      data.append('image', file);
+      const res = await api.post('/upload', data, { headers: { 'Content-Type': 'multipart/form-data' } });
+      setForm((f) => ({ ...f, image: res.data.url }));
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleEdit = (c) => {
     setEditingId(c.id);
-    setForm({ nameEn: c.nameEn, nameAr: c.nameAr, isActive: c.isActive, sortOrder: c.sortOrder });
+    setForm({ nameEn: c.nameEn, nameAr: c.nameAr, image: c.image || '', isActive: c.isActive, sortOrder: c.sortOrder });
   };
 
   const handleDelete = async (id) => {
@@ -49,7 +64,7 @@ const Categories = () => {
     <div>
       <h1>{t('categories.title')}</h1>
       <div className="card" style={{ marginBottom: 20 }}>
-        <form onSubmit={handleSubmit} className="grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 100px 100px auto', gap: 12, alignItems: 'end' }}>
+        <form onSubmit={handleSubmit} className="grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 160px 90px 90px auto', gap: 12, alignItems: 'end' }}>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <label>{t('categories.name_en')}</label>
             <input required value={form.nameEn} onChange={(e) => setForm({ ...form, nameEn: e.target.value })} />
@@ -57,6 +72,11 @@ const Categories = () => {
           <div className="form-group" style={{ marginBottom: 0 }}>
             <label>{t('categories.name_ar')}</label>
             <input required value={form.nameAr} onChange={(e) => setForm({ ...form, nameAr: e.target.value })} dir="rtl" />
+          </div>
+          <div className="form-group" style={{ marginBottom: 0 }}>
+            <label>{t('categories.image')}</label>
+            <input type="file" accept="image/*" onChange={handleUpload} />
+            {uploading && <span>{t('banners_page.uploading')}</span>}
           </div>
           <div className="form-group" style={{ marginBottom: 0 }}>
             <label>{t('categories.sort')}</label>
@@ -77,6 +97,7 @@ const Categories = () => {
         <table>
           <thead>
             <tr>
+              <th>{t('categories.image')}</th>
               <th>{t('categories.name_en')}</th>
               <th>{t('categories.name_ar')}</th>
               <th>{t('common.status')}</th>
@@ -86,6 +107,7 @@ const Categories = () => {
           <tbody>
             {categories.map((c) => (
               <tr key={c.id}>
+                <td>{c.image && <img src={c.image} alt="" style={{ height: 32, borderRadius: 4 }} />}</td>
                 <td>{c.nameEn}</td>
                 <td dir="rtl">{c.nameAr}</td>
                 <td>
