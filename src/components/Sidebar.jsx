@@ -1,22 +1,26 @@
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
-
-const links = [
-  { to: '/', label: 'Dashboard', end: true },
-  { to: '/products', label: 'Products' },
-  { to: '/categories', label: 'Categories' },
-  { to: '/banners', label: 'Banners' },
-  { to: '/orders', label: 'Orders' },
-  { to: '/settings', label: 'Payment Settings' },
-];
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const { logout } = useAuth();
+
+  const links = [
+    { to: '/', label: t('nav.dashboard'), end: true },
+    { to: '/products', label: t('nav.products') },
+    { to: '/categories', label: t('nav.categories') },
+    { to: '/banners', label: t('nav.banners') },
+    { to: '/orders', label: t('nav.orders') },
+    { to: '/settings', label: t('nav.payment_settings') },
+  ];
+
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
         <img src="/logo-colored.svg" alt="Pantry" />
-        <span>Pantry Foods</span>
+        <span>{t('brand')}</span>
       </div>
       <nav>
         {links.map((l) => (
@@ -25,8 +29,11 @@ const Sidebar = () => {
           </NavLink>
         ))}
       </nav>
-      <button className="btn btn-outline" onClick={logout} style={{ margin: 16 }}>
-        Logout
+      <div style={{ padding: '0 16px 16px' }}>
+        <LanguageSwitcher />
+      </div>
+      <button className="btn btn-outline" onClick={logout} style={{ margin: '0 16px 16px' }}>
+        {t('nav.logout')}
       </button>
     </aside>
   );

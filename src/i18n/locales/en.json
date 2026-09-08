@@ -1,0 +1,48 @@
+{
+  "brand": "Pantry Foods Admin",
+  "nav": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "categories": "Categories",
+    "banners": "Banners",
+    "orders": "Orders",
+    "payment_settings": "Payment Settings",
+    "admins": "Admins",
+    "promo_codes": "Promo Codes",
+    "pages": "Pages",
+    "delivery_rules": "Delivery Rules",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Pantry Foods Admin",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "failed": "Login failed"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "add_new": "Add New",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "confirm_delete": "Are you sure you want to delete this?",
+    "loading": "Loading...",
+    "search": "Search",
+    "name": "Name",
+    "image": "Image",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back"
+  },
+  "payment_settings": {
+    "title": "Payment Settings",
+    "description": "Enable or disable checkout payment methods. Customers only see enabled methods at checkout. KNET and Sadad require merchant credentials to be added on the server (.env) before going live.",
+    "enabled": "Enabled"
+  }
+}

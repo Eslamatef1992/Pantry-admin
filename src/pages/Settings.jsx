@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const Settings = () => {
+  const { t } = useTranslation();
   const [methods, setMethods] = useState([]);
 
   const load = () => api.get('/settings/admin/payment-methods').then((res) => setMethods(res.data));
@@ -17,11 +19,8 @@ const Settings = () => {
 
   return (
     <div>
-      <h1>Payment Settings</h1>
-      <p style={{ color: '#6b7280', marginBottom: 20 }}>
-        Enable or disable checkout payment methods. Customers only see enabled methods at checkout. KNET and Sadad
-        require merchant credentials to be added on the server (.env) before going live.
-      </p>
+      <h1>{t('payment_settings.title')}</h1>
+      <p style={{ color: '#6b7280', marginBottom: 20 }}>{t('payment_settings.description')}</p>
       <div className="card">
         {methods.map((m) => (
           <div className="switch-row" key={m.method}>
@@ -30,7 +29,8 @@ const Settings = () => {
               <div style={{ fontSize: 13, color: '#6b7280' }}>{m.displayNameAr}</div>
             </div>
             <label>
-              <input type="checkbox" checked={m.isEnabled} onChange={(e) => toggle(m.method, e.target.checked)} /> Enabled
+              <input type="checkbox" checked={m.isEnabled} onChange={(e) => toggle(m.method, e.target.checked)} />{' '}
+              {t('payment_settings.enabled')}
             </label>
           </div>
         ))}
