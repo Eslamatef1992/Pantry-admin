@@ -168,5 +168,13 @@
     "update": "Update",
     "confirm_delete": "Delete this page?",
     "save_failed": "Failed to save page"
+  },
+  "site_settings": {
+    "title": "Contact Info",
+    "description": "Shown in the storefront footer. Leave a field blank to hide it.",
+    "phone1": "Phone 1",
+    "phone2": "Phone 2 (optional)",
+    "email": "Email",
+    "saved": "Saved"
   }
 }
