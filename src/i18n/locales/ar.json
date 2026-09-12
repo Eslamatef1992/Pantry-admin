@@ -119,7 +119,22 @@
     "sort_col": "الترتيب",
     "confirm_delete": "هل تريد حذف هذا البانر؟",
     "image_required": "الرجاء رفع صورة البانر.",
-    "save_failed": "فشل حفظ البانر"
+    "save_failed": "فشل حفظ البانر",
+    "layout_hint": "يعرض قسم البانر في الصفحة الرئيسية أول 3 بانرات نشطة (حسب ترتيب العرض): الأول هو البانر الرئيسي الكبير، والثاني والثالث هما البانرات الجانبية. أي بانر رابع نشط يُستخدم لاحقًا في الصفحة كشريط ترويجي.",
+    "position_col": "موضع العرض",
+    "position_main": "البانر الرئيسي",
+    "position_side": "بانر جانبي",
+    "position_promo": "شريط ترويجي",
+    "position_hidden": "غير معروض",
+    "link_type": "يوجه إلى",
+    "link_type_shop": "كل المنتجات (صفحة المتجر)",
+    "link_type_category": "فئة معينة",
+    "link_type_product": "منتج معين",
+    "link_type_custom": "رابط مخصص",
+    "choose_category": "اختر الفئة",
+    "choose_product": "اختر المنتج",
+    "choose_placeholder": "-- اختر --",
+    "link_col": "يوجه إلى"
   },
   "orders_page": {
     "title": "الطلبات",
