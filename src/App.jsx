@@ -13,6 +13,13 @@ import StaticPages from './pages/StaticPages';
 import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail';
 import Settings from './pages/Settings';
+import Users from './pages/Users';
+import Admins from './pages/Admins';
+import Rules from './pages/Rules';
+import ContactMessages from './pages/ContactMessages';
+import Reports from './pages/Reports';
+import ProductStock from './pages/ProductStock';
+import SuperAdminRoute from './components/SuperAdminRoute';
 
 function Shell({ children }) {
   return (
@@ -46,6 +53,26 @@ function App() {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/orders/:id" element={<OrderDetail />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/users" element={<Users />} />
+                <Route
+                  path="/admins"
+                  element={
+                    <SuperAdminRoute>
+                      <Admins />
+                    </SuperAdminRoute>
+                  }
+                />
+                <Route
+                  path="/rules"
+                  element={
+                    <SuperAdminRoute>
+                      <Rules />
+                    </SuperAdminRoute>
+                  }
+                />
+                <Route path="/contact-messages" element={<ContactMessages />} />
+                <Route path="/reports" element={<Reports />} />
+                <Route path="/product-stock" element={<ProductStock />} />
               </Routes>
             </Shell>
           </ProtectedRoute>

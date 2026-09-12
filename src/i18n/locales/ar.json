@@ -7,12 +7,17 @@
     "banners": "البانرات",
     "orders": "الطلبات",
     "payment_settings": "إعدادات الدفع",
-    "admins": "المسؤولون",
+    "admins": "المشرفون",
     "promo_codes": "أكواد الخصم",
     "pages": "الصفحات",
-    "delivery_rules": "قواعد التوصيل",
+    "delivery_rules": "القواعد",
     "logout": "تسجيل الخروج",
-    "brands": "الماركات"
+    "brands": "الماركات",
+    "users": "المستخدمون",
+    "guest_orders": "طلبات الزوار",
+    "reports": "التقارير",
+    "contact_messages": "رسائل التواصل",
+    "product_stock": "مخزون المنتجات"
   },
   "login": {
     "title": "إدارة بنتري فودز",
@@ -39,7 +44,15 @@
     "image": "الصورة",
     "yes": "نعم",
     "no": "لا",
-    "back": "رجوع"
+    "back": "رجوع",
+    "block": "حظر",
+    "unblock": "إلغاء الحظر",
+    "view": "عرض",
+    "print": "طباعة",
+    "read": "مقروء",
+    "unread": "غير مقروء",
+    "mark_read": "تعليم كمقروء",
+    "all": "الكل"
   },
   "payment_settings": {
     "title": "إعدادات الدفع",
@@ -148,7 +161,12 @@
     "status": "الحالة",
     "date": "التاريخ",
     "view": "عرض",
-    "unregistered": "—"
+    "unregistered": "—",
+    "all": "الكل",
+    "registered": "مسجل",
+    "guests": "زوار",
+    "search_placeholder": "ابحث برقم الطلب أو الاسم أو الهاتف",
+    "print": "طباعة"
   },
   "order_detail": {
     "title": "طلب",
@@ -161,7 +179,8 @@
     "totals": "الإجماليات",
     "subtotal": "المجموع الفرعي",
     "delivery": "التوصيل",
-    "total": "الإجمالي"
+    "total": "الإجمالي",
+    "customer": "العميل"
   },
   "brands": {
     "title": "الماركات",
@@ -193,5 +212,85 @@
     "phone2": "الهاتف 2 (اختياري)",
     "email": "البريد الإلكتروني",
     "saved": "تم الحفظ"
+  },
+  "users_page": {
+    "title": "المستخدمون",
+    "search_placeholder": "ابحث بالاسم أو البريد أو الهاتف",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "orders": "الطلبات",
+    "joined": "تاريخ التسجيل",
+    "status": "الحالة"
+  },
+  "admins_page": {
+    "title": "المشرفون",
+    "add_new": "إضافة مشرف",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "password": "كلمة المرور",
+    "password_hint": "اتركه فارغًا للاحتفاظ بكلمة المرور الحالية",
+    "role": "الصلاحية",
+    "super_admin": "مشرف عام",
+    "staff": "موظف",
+    "active": "نشط",
+    "save": "حفظ",
+    "update": "تحديث المشرف",
+    "confirm_delete": "هل تريد إزالة حساب المشرف هذا؟",
+    "cannot_delete_self": "لا يمكنك حذف حسابك الخاص",
+    "cannot_demote_self": "لا يمكنك تغيير صلاحيتك الخاصة",
+    "save_failed": "تعذر حفظ المشرف",
+    "you": "أنت"
+  },
+  "rules_page": {
+    "title": "القواعد",
+    "description": "قواعد التوصيل والحد الأدنى للطلب المطبقة عند إتمام الشراء.",
+    "min_order_amount": "الحد الأدنى لقيمة الطلب (د.ك)",
+    "delivery_fee": "رسوم التوصيل (د.ك)",
+    "free_delivery_threshold": "توصيل مجاني فوق (د.ك)",
+    "free_delivery_hint": "اتركه فارغًا لعدم إلغاء رسوم التوصيل مطلقًا",
+    "saved": "تم الحفظ",
+    "super_admin_only": "يمكن للمشرفين العامين فقط تغيير هذه القواعد."
+  },
+  "contact_messages_page": {
+    "title": "رسائل تواصل معنا",
+    "from": "من",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "message": "الرسالة",
+    "date": "التاريخ",
+    "confirm_delete": "حذف هذه الرسالة؟",
+    "empty": "لا توجد رسائل حتى الآن"
+  },
+  "reports_page": {
+    "title": "التقارير",
+    "revenue": "الإيرادات",
+    "orders_by_status": "الطلبات حسب الحالة",
+    "top_products": "المنتجات الأكثر مبيعًا",
+    "from": "من",
+    "to": "إلى",
+    "apply": "تطبيق",
+    "total_orders": "إجمالي الطلبات",
+    "total_revenue": "إجمالي الإيرادات",
+    "product": "المنتج",
+    "units_sold": "الوحدات المباعة"
+  },
+  "product_stock_page": {
+    "title": "مخزون المنتجات",
+    "search_placeholder": "ابحث بالاسم أو رمز SKU",
+    "sku": "رمز SKU",
+    "stock": "المخزون",
+    "orders_count": "عدد مرات الطلب",
+    "units_sold": "الوحدات المباعة",
+    "low_stock": "مخزون منخفض",
+    "out_of_stock": "نفدت الكمية"
+  },
+  "nav_sections": {
+    "overview": "نظرة عامة",
+    "catalog": "الكتالوج",
+    "sales": "المبيعات",
+    "content": "المحتوى",
+    "admin": "الإدارة"
   }
 }

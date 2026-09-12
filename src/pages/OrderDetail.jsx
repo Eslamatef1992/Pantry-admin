@@ -1,30 +1,47 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
 const OrderDetail = () => {
   const { t } = useTranslation();
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    api.get('/orders/admin/all', { params: { limit: 200 } }).then((res) => {
-      const found = res.data.orders.find((o) => o.id === Number(id));
-      setOrder(found);
-    });
+    api.get(`/orders/admin/${id}`).then((res) => setOrder(res.data));
   }, [id]);
+
+  useEffect(() => {
+    if (order && searchParams.get('print') === '1') {
+      // Give the browser a tick to finish painting before opening the print dialog.
+      const timer = setTimeout(() => window.print(), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [order, searchParams]);
 
   if (!order) return <p>{t('common.loading')}</p>;
 
   const shipping = order.shippingSnapshot || {};
+  const customerName = order.user ? order.user.name : order.guestName;
+  const customerEmail = order.user ? order.user.email : order.guestEmail;
+  const customerPhone = order.user ? order.user.phone : order.guestPhone;
 
   return (
     <div>
+      <div className="toolbar no-print">
+        <Link to="/orders" className="btn btn-outline order-detail-back">
+          {t('common.back')}
+        </Link>
+        <button className="btn" onClick={() => window.print()}>
+          {t('orders_page.print')}
+        </button>
+      </div>
       <h1>
         {t('order_detail.title')} #{order.orderNumber}
       </h1>
-      <div className="grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20 }}>
+      <div className="grid order-detail-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20 }}>
         <div className="card">
           <h3>{t('order_detail.items')}</h3>
           <table>
@@ -47,6 +64,15 @@ const OrderDetail = () => {
           </table>
         </div>
         <div className="card">
+          <h3>{t('order_detail.customer')}</h3>
+          <p>
+            {customerName}
+            {!order.user && <span className="badge off" style={{ marginInlineStart: 6 }}>{t('orders_page.guests')}</span>}
+            <br />
+            {customerPhone}
+            <br />
+            {customerEmail}
+          </p>
           <h3>{t('order_detail.delivery_address')}</h3>
           <p>
             {shipping.fullName}

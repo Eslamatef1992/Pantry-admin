@@ -10,9 +10,14 @@
     "admins": "Admins",
     "promo_codes": "Promo Codes",
     "pages": "Pages",
-    "delivery_rules": "Delivery Rules",
+    "delivery_rules": "Rules",
     "logout": "Logout",
-    "brands": "Brands"
+    "brands": "Brands",
+    "users": "Users",
+    "guest_orders": "Guest Orders",
+    "reports": "Reports",
+    "contact_messages": "Contact Messages",
+    "product_stock": "Product Stock"
   },
   "login": {
     "title": "Pantry Foods Admin",
@@ -39,7 +44,15 @@
     "image": "Image",
     "yes": "Yes",
     "no": "No",
-    "back": "Back"
+    "back": "Back",
+    "block": "Block",
+    "unblock": "Unblock",
+    "view": "View",
+    "print": "Print",
+    "read": "Read",
+    "unread": "Unread",
+    "mark_read": "Mark read",
+    "all": "All"
   },
   "payment_settings": {
     "title": "Payment Settings",
@@ -148,7 +161,12 @@
     "status": "Status",
     "date": "Date",
     "view": "View",
-    "unregistered": "—"
+    "unregistered": "—",
+    "all": "All",
+    "registered": "Registered",
+    "guests": "Guests",
+    "search_placeholder": "Search order #, name or phone",
+    "print": "Print"
   },
   "order_detail": {
     "title": "Order",
@@ -161,7 +179,8 @@
     "totals": "Totals",
     "subtotal": "Subtotal",
     "delivery": "Delivery",
-    "total": "Total"
+    "total": "Total",
+    "customer": "Customer"
   },
   "brands": {
     "title": "Brands",
@@ -193,5 +212,85 @@
     "phone2": "Phone 2 (optional)",
     "email": "Email",
     "saved": "Saved"
+  },
+  "users_page": {
+    "title": "Users",
+    "search_placeholder": "Search by name, email or phone",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "orders": "Orders",
+    "joined": "Joined",
+    "status": "Status"
+  },
+  "admins_page": {
+    "title": "Admins",
+    "add_new": "Add Admin",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "password": "Password",
+    "password_hint": "Leave blank to keep the current password",
+    "role": "Role",
+    "super_admin": "Super Admin",
+    "staff": "Staff",
+    "active": "Active",
+    "save": "Save",
+    "update": "Update Admin",
+    "confirm_delete": "Remove this admin account?",
+    "cannot_delete_self": "You cannot delete your own account",
+    "cannot_demote_self": "You cannot change your own role",
+    "save_failed": "Could not save admin",
+    "you": "You"
+  },
+  "rules_page": {
+    "title": "Rules",
+    "description": "Store-wide delivery and order rules applied at checkout.",
+    "min_order_amount": "Minimum order amount (KWD)",
+    "delivery_fee": "Delivery fee (KWD)",
+    "free_delivery_threshold": "Free delivery above (KWD)",
+    "free_delivery_hint": "Leave blank to never waive the delivery fee",
+    "saved": "Saved",
+    "super_admin_only": "Only super admins can change these rules."
+  },
+  "contact_messages_page": {
+    "title": "Contact Us Messages",
+    "from": "From",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "date": "Date",
+    "confirm_delete": "Delete this message?",
+    "empty": "No messages yet"
+  },
+  "reports_page": {
+    "title": "Reports",
+    "revenue": "Revenue",
+    "orders_by_status": "Orders by status",
+    "top_products": "Top selling products",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "total_orders": "Total orders",
+    "total_revenue": "Total revenue",
+    "product": "Product",
+    "units_sold": "Units sold"
+  },
+  "product_stock_page": {
+    "title": "Product Stock",
+    "search_placeholder": "Search by name or SKU",
+    "sku": "SKU",
+    "stock": "Stock",
+    "orders_count": "Times ordered",
+    "units_sold": "Units sold",
+    "low_stock": "Low stock",
+    "out_of_stock": "Out of stock"
+  },
+  "nav_sections": {
+    "overview": "Overview",
+    "catalog": "Catalog",
+    "sales": "Sales",
+    "content": "Content",
+    "admin": "Administration"
   }
 }

@@ -10,6 +10,7 @@ const Brands = () => {
   const [form, setForm] = useState(empty);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
+  const [search, setSearch] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const load = () => api.get('/brands', { params: { all: true } }).then((res) => setBrands(res.data));
@@ -62,7 +63,12 @@ const Brands = () => {
 
   return (
     <div>
-      <h1>{t('brands.title')}</h1>
+      <div className="toolbar">
+        <h1>{t('brands.title')}</h1>
+        <div className="toolbar-actions">
+          <input className="search-input" placeholder={t('common.search')} value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
+      </div>
       <div className="card" style={{ marginBottom: 20 }}>
         <form onSubmit={handleSubmit} className="grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 160px 90px 90px auto', gap: 12, alignItems: 'end' }}>
           <div className="form-group" style={{ marginBottom: 0 }}>
@@ -105,7 +111,14 @@ const Brands = () => {
             </tr>
           </thead>
           <tbody>
-            {brands.map((b) => (
+            {brands
+              .filter(
+                (b) =>
+                  !search ||
+                  b.nameEn.toLowerCase().includes(search.toLowerCase()) ||
+                  b.nameAr.includes(search)
+              )
+              .map((b) => (
               <tr key={b.id}>
                 <td>{b.image && <img src={b.image} alt="" style={{ height: 32, borderRadius: 4 }} />}</td>
                 <td>{b.nameEn}</td>
