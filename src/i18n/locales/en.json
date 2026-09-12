@@ -221,7 +221,8 @@
     "phone": "Phone",
     "orders": "Orders",
     "joined": "Joined",
-    "status": "Status"
+    "status": "Status",
+    "save_failed": "Could not save customer"
   },
   "admins_page": {
     "title": "Admins",

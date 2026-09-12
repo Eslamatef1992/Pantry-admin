@@ -2,12 +2,17 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 
+const empty = { name: '', email: '', phone: '' };
+
 const Users = () => {
   const { t } = useTranslation();
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState('');
   const [total, setTotal] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [form, setForm] = useState(empty);
+  const [editingId, setEditingId] = useState(null);
+  const [error, setError] = useState('');
 
   const load = () =>
     api.get('/users/customers', { params: { search: search || undefined, limit: 100 } }).then((res) => {
@@ -27,6 +32,31 @@ const Users = () => {
     load();
   };
 
+  const handleEdit = (u) => {
+    setEditingId(u.id);
+    setForm({ name: u.name, email: u.email, phone: u.phone || '' });
+    setError('');
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setForm(empty);
+    setError('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await api.put(`/users/customers/${editingId}`, form);
+      setEditingId(null);
+      setForm(empty);
+      load();
+    } catch (err) {
+      setError(err.response?.data?.message || t('users_page.save_failed'));
+    }
+  };
+
   return (
     <div>
       <div className="toolbar">
@@ -42,6 +72,35 @@ const Users = () => {
           />
         </div>
       </div>
+
+      {editingId && (
+        <div className="card" style={{ marginBottom: 20, maxWidth: 640 }}>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>{t('users_page.name')}</label>
+              <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+            </div>
+            <div className="form-group">
+              <label>{t('users_page.email')}</label>
+              <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+            </div>
+            <div className="form-group">
+              <label>{t('users_page.phone')}</label>
+              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+            </div>
+            {error && <p className="error-text">{error}</p>}
+            <div className="toolbar-actions">
+              <button type="submit" className="btn">
+                {t('common.save')}
+              </button>
+              <button type="button" className="btn btn-outline" onClick={handleCancelEdit}>
+                {t('common.cancel')}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
       <div className="card">
         <table>
           <thead>
@@ -69,6 +128,9 @@ const Users = () => {
                   </span>
                 </td>
                 <td>
+                  <button className="btn btn-outline" onClick={() => handleEdit(u)} style={{ marginInlineEnd: 8 }}>
+                    {t('common.edit')}
+                  </button>
                   <button className="btn btn-outline" onClick={() => toggleActive(u.id, !u.isActive)}>
                     {u.isActive ? t('common.block') : t('common.unblock')}
                   </button>
