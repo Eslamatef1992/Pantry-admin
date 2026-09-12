@@ -11,7 +11,8 @@
     "promo_codes": "Promo Codes",
     "pages": "Pages",
     "delivery_rules": "Delivery Rules",
-    "logout": "Logout"
+    "logout": "Logout",
+    "brands": "Brands"
   },
   "login": {
     "title": "Pantry Foods Admin",
@@ -81,6 +82,7 @@
     "description_en": "Description (EN)",
     "description_ar": "Description (AR)",
     "category": "Category",
+    "brand": "Brand (optional)",
     "select": "Select...",
     "unit": "Unit",
     "price": "Price (KWD)",
@@ -143,5 +145,28 @@
     "subtotal": "Subtotal",
     "delivery": "Delivery",
     "total": "Total"
+  },
+  "brands": {
+    "title": "Brands",
+    "name_en": "Name (EN)",
+    "name_ar": "Name (AR)",
+    "image": "Image",
+    "sort": "Sort",
+    "active": "Active",
+    "hidden": "Hidden",
+    "update": "Update",
+    "confirm_delete": "Delete this brand?",
+    "save_failed": "Failed to save brand"
+  },
+  "static_pages": {
+    "title": "Pages",
+    "slug": "Slug (URL id, e.g. about-us)",
+    "title_en": "Title (EN)",
+    "title_ar": "Title (AR)",
+    "content_en": "Content (EN)",
+    "content_ar": "Content (AR)",
+    "update": "Update",
+    "confirm_delete": "Delete this page?",
+    "save_failed": "Failed to save page"
   }
 }

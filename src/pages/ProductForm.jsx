@@ -13,6 +13,7 @@ const empty = {
   stock: 0,
   unit: 'pc',
   categoryId: '',
+  brandId: '',
   isActive: true,
   isFeatured: false,
   isBestSeller: false,
@@ -28,11 +29,13 @@ const ProductForm = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState(empty);
   const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [error, setError] = useState('');
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     api.get('/categories', { params: { all: true } }).then((res) => setCategories(res.data));
+    api.get('/brands', { params: { all: true } }).then((res) => setBrands(res.data));
     if (!isNew) {
       api.get('/products').then(async () => {
         // fetch by id via admin listing since /products/:slug expects slug; use all list and find by id
@@ -65,6 +68,7 @@ const ProductForm = () => {
         ...form,
         price: Number(form.price),
         categoryId: Number(form.categoryId),
+        brandId: form.brandId ? Number(form.brandId) : null,
         compareAtPrice: form.compareAtPrice ? Number(form.compareAtPrice) : null,
       };
       if (isNew) {
@@ -106,6 +110,17 @@ const ProductForm = () => {
               {categories.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.nameEn}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>{t('product_form.brand')}</label>
+            <select value={form.brandId || ''} onChange={(e) => setForm({ ...form, brandId: e.target.value })}>
+              <option value="">{t('product_form.select')}</option>
+              {brands.map((b) => (
+                <option key={b.id} value={b.id}>
+                  {b.nameEn}
                 </option>
               ))}
             </select>

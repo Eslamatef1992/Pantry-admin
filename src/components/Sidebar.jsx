@@ -11,7 +11,9 @@ const Sidebar = () => {
     { to: '/', label: t('nav.dashboard'), end: true },
     { to: '/products', label: t('nav.products') },
     { to: '/categories', label: t('nav.categories') },
+    { to: '/brands', label: t('nav.brands') },
     { to: '/banners', label: t('nav.banners') },
+    { to: '/pages', label: t('nav.pages') },
     { to: '/orders', label: t('nav.orders') },
     { to: '/settings', label: t('nav.payment_settings') },
   ];

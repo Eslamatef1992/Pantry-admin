@@ -8,6 +8,8 @@ import Products from './pages/Products';
 import ProductForm from './pages/ProductForm';
 import Categories from './pages/Categories';
 import Banners from './pages/Banners';
+import Brands from './pages/Brands';
+import StaticPages from './pages/StaticPages';
 import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail';
 import Settings from './pages/Settings';
@@ -39,6 +41,8 @@ function App() {
                 <Route path="/products/:id" element={<ProductForm />} />
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/banners" element={<Banners />} />
+                <Route path="/brands" element={<Brands />} />
+                <Route path="/pages" element={<StaticPages />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/orders/:id" element={<OrderDetail />} />
                 <Route path="/settings" element={<Settings />} />
