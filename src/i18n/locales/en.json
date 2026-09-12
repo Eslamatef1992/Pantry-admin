@@ -79,6 +79,8 @@
     "edit_title": "Edit Product",
     "name_en": "Name (EN)",
     "name_ar": "Name (AR)",
+    "sku": "SKU (optional)",
+    "sku_placeholder": "e.g. HNY-500-JAR",
     "description_en": "Description (EN)",
     "description_ar": "Description (AR)",
     "category": "Category",

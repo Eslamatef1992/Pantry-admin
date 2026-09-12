@@ -79,6 +79,8 @@
     "edit_title": "تعديل منتج",
     "name_en": "الاسم (إنجليزي)",
     "name_ar": "الاسم (عربي)",
+    "sku": "رمز المنتج SKU (اختياري)",
+    "sku_placeholder": "مثال: HNY-500-JAR",
     "description_en": "الوصف (إنجليزي)",
     "description_ar": "الوصف (عربي)",
     "category": "الفئة",

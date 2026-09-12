@@ -6,6 +6,7 @@ import api from '../api/axios';
 const empty = {
   nameEn: '',
   nameAr: '',
+  sku: '',
   descriptionEn: '',
   descriptionAr: '',
   price: '',
@@ -66,6 +67,7 @@ const ProductForm = () => {
     try {
       const payload = {
         ...form,
+        sku: form.sku ? form.sku.trim() : null,
         price: Number(form.price),
         categoryId: Number(form.categoryId),
         brandId: form.brandId ? Number(form.brandId) : null,
@@ -93,6 +95,14 @@ const ProductForm = () => {
         <div className="form-group">
           <label>{t('product_form.name_ar')}</label>
           <input required dir="rtl" value={form.nameAr} onChange={(e) => setForm({ ...form, nameAr: e.target.value })} />
+        </div>
+        <div className="form-group">
+          <label>{t('product_form.sku')}</label>
+          <input
+            value={form.sku || ''}
+            onChange={(e) => setForm({ ...form, sku: e.target.value })}
+            placeholder={t('product_form.sku_placeholder')}
+          />
         </div>
         <div className="form-group">
           <label>{t('product_form.description_en')}</label>
