@@ -24,28 +24,32 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: '#f7f8f6' }}>
-      <form onSubmit={handleSubmit} className="card" style={{ width: 360 }}>
-        <div style={{ textAlign: 'center', marginBottom: 16 }}>
-          <img src="/logo-colored.svg" alt="Pantry" style={{ height: 48 }} />
-          <h2>{t('login.title')}</h2>
-        </div>
-        <div className="form-group">
-          <label>{t('login.email')}</label>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="form-group">
-          <label>{t('login.password')}</label>
-          <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        {error && <p className="error-text">{error}</p>}
-        <button type="submit" className="btn" style={{ width: '100%' }}>
-          {t('login.sign_in')}
-        </button>
-        <div style={{ marginTop: 16, textAlign: 'center' }}>
-          <LanguageSwitcher />
-        </div>
-      </form>
+    <div className="login-page">
+      <div className="login-glow" />
+      <div className="login-stack">
+        <form onSubmit={handleSubmit} className="card" style={{ width: 360 }}>
+          <div style={{ textAlign: 'center', marginBottom: 16 }}>
+            <img src="/logo-colored.svg" alt="Pantry" style={{ height: 48 }} />
+            <h2>{t('login.title')}</h2>
+          </div>
+          <div className="form-group">
+            <label>{t('login.email')}</label>
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label>{t('login.password')}</label>
+            <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          {error && <p className="error-text">{error}</p>}
+          <button type="submit" className="btn" style={{ width: '100%' }}>
+            {t('login.sign_in')}
+          </button>
+          <div style={{ marginTop: 16, textAlign: 'center' }}>
+            <LanguageSwitcher />
+          </div>
+        </form>
+        <div className="login-powered">{t('login.powered_by')}</div>
+      </div>
     </div>
   );
 };

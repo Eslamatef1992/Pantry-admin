@@ -17,14 +17,16 @@
     "guest_orders": "Guest Orders",
     "reports": "Reports",
     "contact_messages": "Contact Messages",
-    "product_stock": "Product Stock"
+    "product_stock": "Product Stock",
+    "seo": "SEO"
   },
   "login": {
     "title": "Pantry Foods Admin",
     "email": "Email",
     "password": "Password",
     "sign_in": "Sign In",
-    "failed": "Login failed"
+    "failed": "Login failed",
+    "powered_by": "Powered by Teknulugy"
   },
   "common": {
     "save": "Save",
@@ -68,7 +70,12 @@
     "total_orders": "Total Orders",
     "pending_orders": "Pending Orders",
     "products": "Products",
-    "revenue": "Revenue (paid orders)"
+    "revenue": "Revenue (paid orders)",
+    "total_customers": "Total Customers",
+    "delivered_orders": "Delivered Orders",
+    "cancelled_orders": "Cancelled Orders",
+    "top_product": "Top Product",
+    "units_sold": "sold"
   },
   "categories": {
     "title": "Categories",
@@ -80,7 +87,9 @@
     "update": "Update",
     "confirm_delete": "Delete this category?",
     "save_failed": "Failed to save category",
-    "image": "Image"
+    "image": "Image",
+    "add_category": "Add Category",
+    "edit_category": "Edit Category"
   },
   "products_page": {
     "title": "Products",
@@ -201,7 +210,9 @@
     "hidden": "Hidden",
     "update": "Update",
     "confirm_delete": "Delete this brand?",
-    "save_failed": "Failed to save brand"
+    "save_failed": "Failed to save brand",
+    "add_brand": "Add Brand",
+    "edit_brand": "Edit Brand"
   },
   "static_pages": {
     "title": "Pages",
@@ -212,7 +223,9 @@
     "content_ar": "Content (AR)",
     "update": "Update",
     "confirm_delete": "Delete this page?",
-    "save_failed": "Failed to save page"
+    "save_failed": "Failed to save page",
+    "add_page": "Add Page",
+    "edit_page": "Edit Page"
   },
   "site_settings": {
     "title": "Contact Info",
@@ -251,7 +264,8 @@
     "cannot_delete_self": "You cannot delete your own account",
     "cannot_demote_self": "You cannot change your own role",
     "save_failed": "Could not save admin",
-    "you": "You"
+    "you": "You",
+    "edit_admin": "Edit Admin"
   },
   "rules_page": {
     "title": "Rules",
@@ -301,7 +315,8 @@
     "catalog": "Catalog",
     "sales": "Sales",
     "content": "Content",
-    "admin": "Administration"
+    "admin": "Administration",
+    "marketing": "Marketing"
   },
   "new_order_page": {
     "title": "New Order",
@@ -338,5 +353,48 @@
     "notes": "Notes",
     "submit": "Create Order",
     "save_failed": "Could not create order"
+  },
+  "seo_page": {
+    "title": "SEO",
+    "description": "Site-wide meta tags and marketing pixels/scripts. Changes here take effect on the storefront immediately.",
+    "meta_title": "Meta / SEO Words",
+    "meta_title_en": "Meta Title (English)",
+    "meta_title_ar": "Meta Title (Arabic)",
+    "meta_description_en": "Meta Description (English)",
+    "meta_description_ar": "Meta Description (Arabic)",
+    "meta_keywords": "Meta Keywords",
+    "meta_keywords_hint": "Comma-separated keywords",
+    "saved": "Saved",
+    "save_failed": "Could not save (super admin only)",
+    "pixels_title": "Pixels & Tracking Scripts",
+    "pixels_description": "Add Snapchat Pixel, Google Tag Manager, Google Analytics, Facebook/TikTok Pixel, or any custom script. Active entries are injected on the storefront automatically.",
+    "add_pixel": "Add Pixel",
+    "label": "Label",
+    "type": "Type",
+    "value": "ID / Code",
+    "custom_code": "Custom code",
+    "no_pixels": "No pixels added yet"
+  },
+  "seo_pixel_form": {
+    "add_title": "Add Pixel / Script",
+    "edit_title": "Edit Pixel / Script",
+    "type": "Type",
+    "type_gtm": "Google Tag Manager",
+    "type_ga4": "Google Analytics (GA4)",
+    "type_snap": "Snapchat Pixel",
+    "type_facebook": "Facebook Pixel",
+    "type_tiktok": "TikTok Pixel",
+    "type_custom": "Custom Script",
+    "label": "Label",
+    "pixel_id": "Pixel / Container ID",
+    "code": "Custom Code",
+    "active": "Active (injected on the storefront)",
+    "hint_gtm": "Your GTM container ID, e.g. GTM-XXXXXXX",
+    "hint_ga4": "Your GA4 Measurement ID, e.g. G-XXXXXXXXXX",
+    "hint_snap": "Your Snapchat Pixel ID from Snapchat Ads Manager",
+    "hint_facebook": "Your Facebook Pixel ID from Meta Events Manager",
+    "hint_tiktok": "Your TikTok Pixel ID from TikTok Ads Manager",
+    "hint_custom": "Paste the full script tag(s) exactly as given by the provider. It will be added to every storefront page.",
+    "save_failed": "Could not save this pixel"
   }
 }

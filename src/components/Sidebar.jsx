@@ -87,6 +87,13 @@ const icons = {
       <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
     </svg>
   ),
+  seo: (
+    <svg className="nav-ic nav-ic-seo" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" />
+      <path d="M8 11h6M11 8v6" />
+    </svg>
+  ),
   settings: (
     <svg className="nav-ic nav-ic-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="3" />
@@ -121,6 +128,14 @@ const Sidebar = () => {
       label: t('nav_sections.sales'),
       links: [{ to: '/orders', label: t('nav.orders'), icon: icons.orders }],
     },
+    ...(isSuperAdmin
+      ? [
+          {
+            label: t('nav_sections.marketing'),
+            links: [{ to: '/seo', label: t('nav.seo'), icon: icons.seo }],
+          },
+        ]
+      : []),
     {
       label: t('nav_sections.content'),
       links: [

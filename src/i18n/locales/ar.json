@@ -17,14 +17,16 @@
     "guest_orders": "طلبات الزوار",
     "reports": "التقارير",
     "contact_messages": "رسائل التواصل",
-    "product_stock": "مخزون المنتجات"
+    "product_stock": "مخزون المنتجات",
+    "seo": "تحسين محركات البحث"
   },
   "login": {
     "title": "إدارة بنتري فودز",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "sign_in": "تسجيل الدخول",
-    "failed": "فشل تسجيل الدخول"
+    "failed": "فشل تسجيل الدخول",
+    "powered_by": "بدعم من Teknulugy"
   },
   "common": {
     "save": "حفظ",
@@ -68,7 +70,12 @@
     "total_orders": "إجمالي الطلبات",
     "pending_orders": "الطلبات المعلّقة",
     "products": "المنتجات",
-    "revenue": "الإيرادات (الطلبات المدفوعة)"
+    "revenue": "الإيرادات (الطلبات المدفوعة)",
+    "total_customers": "إجمالي العملاء",
+    "delivered_orders": "طلبات تم توصيلها",
+    "cancelled_orders": "طلبات ملغاة",
+    "top_product": "الأكثر مبيعًا",
+    "units_sold": "مباع"
   },
   "categories": {
     "title": "الفئات",
@@ -80,7 +87,9 @@
     "update": "تحديث",
     "confirm_delete": "هل تريد حذف هذه الفئة؟",
     "save_failed": "فشل حفظ الفئة",
-    "image": "الصورة"
+    "image": "الصورة",
+    "add_category": "إضافة فئة",
+    "edit_category": "تعديل الفئة"
   },
   "products_page": {
     "title": "المنتجات",
@@ -201,7 +210,9 @@
     "hidden": "مخفي",
     "update": "تحديث",
     "confirm_delete": "هل تريد حذف هذه الماركة؟",
-    "save_failed": "فشل حفظ الماركة"
+    "save_failed": "فشل حفظ الماركة",
+    "add_brand": "إضافة علامة تجارية",
+    "edit_brand": "تعديل العلامة التجارية"
   },
   "static_pages": {
     "title": "الصفحات",
@@ -212,7 +223,9 @@
     "content_ar": "المحتوى (عربي)",
     "update": "تحديث",
     "confirm_delete": "هل تريد حذف هذه الصفحة؟",
-    "save_failed": "فشل حفظ الصفحة"
+    "save_failed": "فشل حفظ الصفحة",
+    "add_page": "إضافة صفحة",
+    "edit_page": "تعديل الصفحة"
   },
   "site_settings": {
     "title": "معلومات التواصل",
@@ -251,7 +264,8 @@
     "cannot_delete_self": "لا يمكنك حذف حسابك الخاص",
     "cannot_demote_self": "لا يمكنك تغيير صلاحيتك الخاصة",
     "save_failed": "تعذر حفظ المشرف",
-    "you": "أنت"
+    "you": "أنت",
+    "edit_admin": "تعديل المشرف"
   },
   "rules_page": {
     "title": "القواعد",
@@ -301,7 +315,8 @@
     "catalog": "الكتالوج",
     "sales": "المبيعات",
     "content": "المحتوى",
-    "admin": "الإدارة"
+    "admin": "الإدارة",
+    "marketing": "التسويق"
   },
   "new_order_page": {
     "title": "طلب جديد",
@@ -338,5 +353,48 @@
     "notes": "ملاحظات",
     "submit": "إنشاء الطلب",
     "save_failed": "تعذر إنشاء الطلب"
+  },
+  "seo_page": {
+    "title": "تحسين محركات البحث",
+    "description": "وسوم الميتا وبكسلات/سكربتات التسويق على مستوى الموقع. التغييرات هنا تُطبق على المتجر فورًا.",
+    "meta_title": "الميتا / كلمات السيو",
+    "meta_title_en": "عنوان الميتا (إنجليزي)",
+    "meta_title_ar": "عنوان الميتا (عربي)",
+    "meta_description_en": "وصف الميتا (إنجليزي)",
+    "meta_description_ar": "وصف الميتا (عربي)",
+    "meta_keywords": "كلمات مفتاحية",
+    "meta_keywords_hint": "كلمات مفصولة بفواصل",
+    "saved": "تم الحفظ",
+    "save_failed": "تعذر الحفظ (للمشرف الأعلى فقط)",
+    "pixels_title": "البكسلات وسكربتات التتبع",
+    "pixels_description": "أضف Snapchat Pixel أو Google Tag Manager أو Google Analytics أو بكسل فيسبوك/تيك توك أو أي سكربت مخصص. العناصر المفعّلة تُضاف تلقائيًا للمتجر.",
+    "add_pixel": "إضافة بكسل",
+    "label": "الاسم",
+    "type": "النوع",
+    "value": "المعرّف / الكود",
+    "custom_code": "كود مخصص",
+    "no_pixels": "لم تتم إضافة أي بكسل بعد"
+  },
+  "seo_pixel_form": {
+    "add_title": "إضافة بكسل / سكربت",
+    "edit_title": "تعديل بكسل / سكربت",
+    "type": "النوع",
+    "type_gtm": "Google Tag Manager",
+    "type_ga4": "Google Analytics (GA4)",
+    "type_snap": "بكسل سناب شات",
+    "type_facebook": "بكسل فيسبوك",
+    "type_tiktok": "بكسل تيك توك",
+    "type_custom": "سكربت مخصص",
+    "label": "الاسم",
+    "pixel_id": "معرّف البكسل / الحاوية",
+    "code": "الكود المخصص",
+    "active": "مفعّل (يُضاف للمتجر)",
+    "hint_gtm": "معرّف حاوية GTM، مثل GTM-XXXXXXX",
+    "hint_ga4": "معرّف قياس GA4، مثل G-XXXXXXXXXX",
+    "hint_snap": "معرّف بكسل سناب شات من Snapchat Ads Manager",
+    "hint_facebook": "معرّف بكسل فيسبوك من Meta Events Manager",
+    "hint_tiktok": "معرّف بكسل تيك توك من TikTok Ads Manager",
+    "hint_custom": "الصق كود السكربت الكامل كما هو من مزود الخدمة. سيتم إضافته لكل صفحات المتجر.",
+    "save_failed": "تعذر حفظ هذا البكسل"
   }
 }
