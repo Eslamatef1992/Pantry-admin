@@ -26,7 +26,10 @@
     "password": "كلمة المرور",
     "sign_in": "تسجيل الدخول",
     "failed": "فشل تسجيل الدخول",
-    "powered_by": "بدعم من Teknulugy"
+    "powered_by": "بدعم من Teknulugy",
+    "welcome_back": "مرحبًا بعودتك",
+    "subtitle": "تسجيل الدخول إلى Pantry",
+    "remember_me": "تذكرني"
   },
   "common": {
     "save": "حفظ",

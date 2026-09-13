@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('admin_token');
+    const token = localStorage.getItem('admin_token') || sessionStorage.getItem('admin_token');
     if (!token) {
       setLoading(false);
       return;
@@ -19,22 +19,30 @@ export const AuthProvider = ({ children }) => {
         if (res.data.user.role !== 'admin') throw new Error('not admin');
         setUser(res.data.user);
       })
-      .catch(() => localStorage.removeItem('admin_token'))
+      .catch(() => {
+        localStorage.removeItem('admin_token');
+        sessionStorage.removeItem('admin_token');
+      })
       .finally(() => setLoading(false));
   }, []);
 
-  const login = async (email, password) => {
+  // remember=true persists the session across browser restarts (localStorage);
+  // remember=false keeps it only for this browser tab/session (sessionStorage).
+  const login = async (email, password, remember = true) => {
     const res = await api.post('/auth/login', { email, password });
     if (res.data.user.role !== 'admin') {
       throw { response: { data: { message: 'This account does not have admin access' } } };
     }
-    localStorage.setItem('admin_token', res.data.token);
+    localStorage.removeItem('admin_token');
+    sessionStorage.removeItem('admin_token');
+    (remember ? localStorage : sessionStorage).setItem('admin_token', res.data.token);
     setUser(res.data.user);
     return res.data.user;
   };
 
   const logout = () => {
     localStorage.removeItem('admin_token');
+    sessionStorage.removeItem('admin_token');
     setUser(null);
   };
 

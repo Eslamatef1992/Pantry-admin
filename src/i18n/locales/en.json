@@ -26,7 +26,10 @@
     "password": "Password",
     "sign_in": "Sign In",
     "failed": "Login failed",
-    "powered_by": "Powered by Teknulugy"
+    "powered_by": "Powered by Teknulugy",
+    "welcome_back": "Welcome Back",
+    "subtitle": "Sign In To Pantry",
+    "remember_me": "Remember Me"
   },
   "common": {
     "save": "Save",
