@@ -75,7 +75,13 @@
     "delivered_orders": "طلبات تم توصيلها",
     "cancelled_orders": "طلبات ملغاة",
     "top_product": "الأكثر مبيعًا",
-    "units_sold": "مباع"
+    "units_sold": "مباع",
+    "today_orders": "طلبات اليوم",
+    "month_revenue": "إيرادات هذا الشهر",
+    "out_of_stock": "نفدت الكمية",
+    "total_categories": "الفئات",
+    "total_brands": "العلامات التجارية",
+    "unread_messages": "رسائل غير مقروءة"
   },
   "categories": {
     "title": "الفئات",

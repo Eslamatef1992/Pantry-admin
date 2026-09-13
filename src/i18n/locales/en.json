@@ -75,7 +75,13 @@
     "delivered_orders": "Delivered Orders",
     "cancelled_orders": "Cancelled Orders",
     "top_product": "Top Product",
-    "units_sold": "sold"
+    "units_sold": "sold",
+    "today_orders": "Today's Orders",
+    "month_revenue": "This Month's Revenue",
+    "out_of_stock": "Out of Stock",
+    "total_categories": "Categories",
+    "total_brands": "Brands",
+    "unread_messages": "Unread Messages"
   },
   "categories": {
     "title": "Categories",

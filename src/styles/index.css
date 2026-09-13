@@ -300,12 +300,26 @@ tbody tr:hover {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  min-height: 118px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
 }
 
 .stat-card .value,
 .stat-card .label {
   position: relative;
   z-index: 1;
+}
+
+.stat-card .value.value-compact {
+  font-size: 15px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .stat-wave {
