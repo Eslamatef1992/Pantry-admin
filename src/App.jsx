@@ -11,6 +11,7 @@ import Banners from './pages/Banners';
 import Brands from './pages/Brands';
 import StaticPages from './pages/StaticPages';
 import Orders from './pages/Orders';
+import NewOrder from './pages/NewOrder';
 import OrderDetail from './pages/OrderDetail';
 import Settings from './pages/Settings';
 import Users from './pages/Users';
@@ -51,6 +52,14 @@ function App() {
                 <Route path="/brands" element={<Brands />} />
                 <Route path="/pages" element={<StaticPages />} />
                 <Route path="/orders" element={<Orders />} />
+                <Route
+                  path="/orders/new"
+                  element={
+                    <SuperAdminRoute>
+                      <NewOrder />
+                    </SuperAdminRoute>
+                  }
+                />
                 <Route path="/orders/:id" element={<OrderDetail />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/users" element={<Users />} />

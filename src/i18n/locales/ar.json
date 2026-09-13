@@ -52,7 +52,11 @@
     "read": "مقروء",
     "unread": "غير مقروء",
     "mark_read": "تعليم كمقروء",
-    "all": "الكل"
+    "all": "الكل",
+    "saving": "جاري الحفظ...",
+    "select": "اختيار",
+    "change": "تغيير",
+    "remove": "إزالة"
   },
   "payment_settings": {
     "title": "إعدادات الدفع",
@@ -166,7 +170,12 @@
     "registered": "مسجل",
     "guests": "زوار",
     "search_placeholder": "ابحث برقم الطلب أو الاسم أو الهاتف",
-    "print": "طباعة"
+    "print": "طباعة",
+    "phone": "الهاتف",
+    "address": "العنوان",
+    "time": "الوقت",
+    "export": "تصدير",
+    "add_order": "إضافة طلب"
   },
   "order_detail": {
     "title": "طلب",
@@ -293,5 +302,41 @@
     "sales": "المبيعات",
     "content": "المحتوى",
     "admin": "الإدارة"
+  },
+  "new_order_page": {
+    "title": "طلب جديد",
+    "customer": "العميل",
+    "existing_customer": "عميل مسجل",
+    "new_customer": "عميل جديد",
+    "customer_search_placeholder": "ابحث بالاسم أو البريد الإلكتروني أو الهاتف...",
+    "select_customer_error": "الرجاء اختيار عميل",
+    "guest_name": "الاسم الكامل",
+    "guest_phone": "الهاتف",
+    "guest_email": "البريد الإلكتروني (اختياري)",
+    "guest_details_error": "اسم العميل والهاتف مطلوبان",
+    "products": "المنتجات",
+    "product_search_placeholder": "ابحث عن المنتجات بالاسم أو رمز المنتج...",
+    "stock": "المخزون",
+    "line_total": "إجمالي السطر",
+    "no_items": "لم تتم إضافة منتجات بعد",
+    "no_items_error": "أضف منتجًا واحدًا على الأقل",
+    "delivery_address": "عنوان التوصيل",
+    "address_full_name": "الاسم الكامل",
+    "address_phone": "الهاتف",
+    "address_governorate": "المحافظة",
+    "address_area": "المنطقة",
+    "address_block": "القطعة",
+    "address_street": "الشارع",
+    "address_building": "المبنى",
+    "address_floor_apartment": "الطابق / الشقة",
+    "address_error": "اسم وهاتف عنوان التوصيل مطلوبان",
+    "summary": "ملخص الطلب",
+    "payment_method": "طريقة الدفع",
+    "payment_cod": "الدفع عند الاستلام",
+    "payment_knet": "كي نت",
+    "payment_sadad": "سداد",
+    "notes": "ملاحظات",
+    "submit": "إنشاء الطلب",
+    "save_failed": "تعذر إنشاء الطلب"
   }
 }

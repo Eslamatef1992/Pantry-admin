@@ -52,7 +52,11 @@
     "read": "Read",
     "unread": "Unread",
     "mark_read": "Mark read",
-    "all": "All"
+    "all": "All",
+    "saving": "Saving...",
+    "select": "Select",
+    "change": "Change",
+    "remove": "Remove"
   },
   "payment_settings": {
     "title": "Payment Settings",
@@ -166,7 +170,12 @@
     "registered": "Registered",
     "guests": "Guests",
     "search_placeholder": "Search order #, name or phone",
-    "print": "Print"
+    "print": "Print",
+    "phone": "Phone",
+    "address": "Address",
+    "time": "Time",
+    "export": "Export",
+    "add_order": "Add Order"
   },
   "order_detail": {
     "title": "Order",
@@ -293,5 +302,41 @@
     "sales": "Sales",
     "content": "Content",
     "admin": "Administration"
+  },
+  "new_order_page": {
+    "title": "New Order",
+    "customer": "Customer",
+    "existing_customer": "Existing Customer",
+    "new_customer": "New Customer",
+    "customer_search_placeholder": "Search by name, email or phone...",
+    "select_customer_error": "Please select a customer",
+    "guest_name": "Full Name",
+    "guest_phone": "Phone",
+    "guest_email": "Email (optional)",
+    "guest_details_error": "Customer name and phone are required",
+    "products": "Products",
+    "product_search_placeholder": "Search products by name or SKU...",
+    "stock": "Stock",
+    "line_total": "Line Total",
+    "no_items": "No products added yet",
+    "no_items_error": "Add at least one product",
+    "delivery_address": "Delivery Address",
+    "address_full_name": "Full Name",
+    "address_phone": "Phone",
+    "address_governorate": "Governorate",
+    "address_area": "Area",
+    "address_block": "Block",
+    "address_street": "Street",
+    "address_building": "Building",
+    "address_floor_apartment": "Floor / Apartment",
+    "address_error": "Delivery name and phone are required",
+    "summary": "Order Summary",
+    "payment_method": "Payment Method",
+    "payment_cod": "Cash on Delivery",
+    "payment_knet": "KNET",
+    "payment_sadad": "Sadad",
+    "notes": "Notes",
+    "submit": "Create Order",
+    "save_failed": "Could not create order"
   }
 }
