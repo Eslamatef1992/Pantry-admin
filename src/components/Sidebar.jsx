@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
@@ -102,10 +103,27 @@ const icons = {
   ),
 };
 
+const MenuIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 const Sidebar = () => {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
+  const [open, setOpen] = useState(false);
   const isSuperAdmin = user && (user.adminRole === 'super_admin' || !user.adminRole);
+  const close = () => setOpen(false);
 
   const sections = [
     {
@@ -156,31 +174,46 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-logo">
-        <img src="/logo-colored.svg" alt="Pantry" />
-        <span>{t('brand')}</span>
+    <>
+      <div className="mobile-topbar">
+        <button className="mobile-menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
+          <MenuIcon />
+        </button>
+        <img src="/logo-colored.svg" alt="Pantry" className="mobile-topbar-logo" />
+        <span className="mobile-topbar-title">{t('brand')}</span>
       </div>
-      <nav>
-        {sections.map((section) => (
-          <div key={section.label}>
-            <div className="nav-section-label">{section.label}</div>
-            {section.links.map((l) => (
-              <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => (isActive ? 'active' : '')}>
-                {l.icon}
-                <span>{l.label}</span>
-              </NavLink>
-            ))}
-          </div>
-        ))}
-      </nav>
-      <div style={{ padding: '0 16px 16px' }}>
-        <LanguageSwitcher />
-      </div>
-      <button className="btn btn-outline" onClick={logout} style={{ margin: '0 16px 16px' }}>
-        {t('nav.logout')}
-      </button>
-    </aside>
+
+      <div className={`sidebar-backdrop ${open ? 'open' : ''}`} onClick={close} />
+
+      <aside className={`sidebar ${open ? 'open' : ''}`}>
+        <div className="sidebar-logo">
+          <img src="/logo-colored.svg" alt="Pantry" />
+          <span>{t('brand')}</span>
+          <button className="sidebar-close-btn" onClick={close} aria-label="Close menu">
+            <CloseIcon />
+          </button>
+        </div>
+        <nav onClick={close}>
+          {sections.map((section) => (
+            <div key={section.label}>
+              <div className="nav-section-label">{section.label}</div>
+              {section.links.map((l) => (
+                <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => (isActive ? 'active' : '')}>
+                  {l.icon}
+                  <span>{l.label}</span>
+                </NavLink>
+              ))}
+            </div>
+          ))}
+        </nav>
+        <div style={{ padding: '0 16px 16px' }}>
+          <LanguageSwitcher />
+        </div>
+        <button className="btn btn-outline" onClick={logout} style={{ margin: '0 16px 16px' }}>
+          {t('nav.logout')}
+        </button>
+      </aside>
+    </>
   );
 };
 
